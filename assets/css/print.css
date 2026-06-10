@@ -1,0 +1,280 @@
+/* assets/css/print.css - Printable forms layout (สม-๐๑ ถึง สม-๐๗) */
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@media screen {
+    .print-preview-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: #ffffff;
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-color);
+    }
+    
+    .print-actions-bar {
+        max-width: 900px;
+        margin: 1rem auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f8fafc;
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-color);
+    }
+    
+    .page-break {
+        margin: 4rem 0;
+        border-top: 3px dashed var(--secondary-color);
+        position: relative;
+    }
+    
+    .page-break::after {
+        content: 'ขึ้นหน้าใหม่สำหรับการพิมพ์ (Page Break)';
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--bg-color);
+        padding: 0 1rem;
+        font-family: var(--font-heading);
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+    }
+}
+
+@media print {
+    header, footer, nav, .print-actions-bar, .no-print, button, .btn {
+        display: none !important;
+    }
+    
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-family: 'Sarabun', sans-serif !important;
+        font-size: 14pt !important;
+        line-height: 1.5 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    main {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .print-preview-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        border: none !important;
+        width: 100% !important;
+    }
+    
+    .page-break {
+        page-break-before: always !important;
+        break-before: page !important;
+        border-top: none !important;
+        margin: 0 !important;
+        height: 0 !important;
+    }
+}
+
+/* Document specific styling matching the PDF */
+.doc-sheet {
+    width: 100%;
+    min-height: 297mm; /* A4 height */
+    padding: 20mm 15mm;
+    box-sizing: border-box;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 14pt;
+    color: #000;
+    position: relative;
+}
+
+.doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.doc-logo-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.doc-logo-box img {
+    height: 80px;
+    width: auto;
+}
+
+.doc-meta-table {
+    border-collapse: collapse;
+    width: 200px;
+    font-size: 11pt;
+}
+
+.doc-meta-table td {
+    border: 1px solid #000000;
+    padding: 3px 8px;
+}
+
+.doc-title {
+    text-align: center;
+    font-size: 20pt;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.doc-subtitle {
+    text-align: center;
+    font-size: 15pt;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.doc-body {
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Blank spaces for filling */
+.fill-line {
+    display: inline-block;
+    border-bottom: 1px dotted #000000;
+    padding: 0 4px;
+    font-weight: bold;
+    color: #0d233a; /* Navy color for printed filled fields */
+}
+
+/* Align text fields with dotted lines */
+.fill-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+}
+
+/* Checkbox rendering */
+.doc-checkbox {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1.5rem;
+    font-weight: normal;
+}
+
+.doc-checkbox::before {
+    content: ' ';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #000000;
+    margin-right: 6px;
+    text-align: center;
+    line-height: 14px;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.doc-checkbox.checked::before {
+    content: '✓';
+}
+
+/* Two column layout */
+.doc-col-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+/* Signatures section */
+.doc-signatures {
+    margin-top: 2.5rem;
+    margin-left: auto;
+    width: 60%;
+    text-align: left;
+    font-size: 13pt;
+    line-height: 2;
+}
+
+.doc-signature-line {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.doc-signature-img {
+    max-height: 45px;
+    max-width: 150px;
+    object-fit: contain;
+    border-bottom: 1px solid transparent;
+    vertical-align: middle;
+}
+
+/* Officer section border */
+.officer-section {
+    border: 1px solid #000000;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    font-size: 12pt;
+    line-height: 1.6;
+}
+
+.officer-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.officer-table td {
+    padding: 6px;
+    vertical-align: top;
+}
+
+.officer-table .border-right {
+    border-right: 1px solid #000000;
+}
+
+.officer-table .border-bottom {
+    border-bottom: 1px solid #000000;
+}
+
+/* Photos section for สม-๐๕ / สม-๐๗ */
+.photo-sheets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.photo-holder {
+    border: 1px solid #000000;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fafafa;
+    position: relative;
+}
+
+.photo-holder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.photo-holder span {
+    position: absolute;
+    bottom: 10px;
+    font-size: 10pt;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 3px 8px;
+    border: 1px solid #000;
+}

@@ -1,0 +1,412 @@
+/* assets/css/form.css - Styles for Multi-step Form Wizard */
+
+/* Step Stepper Progress */
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stepper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #cbd5e1;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.stepper-progress {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    z-index: 1;
+    transform: translateY(-50%);
+    transition: var(--transition-normal);
+    width: 0%;
+}
+
+.step-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 3px solid #cbd5e1;
+    color: #64748b;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+}
+
+.step-label {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #64748b;
+    transition: var(--transition-normal);
+    white-space: nowrap;
+}
+
+.step-item.active .step-circle {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(13, 35, 58, 0.1);
+}
+
+.step-item.active .step-label {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.step-item.completed .step-circle {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.step-item.completed .step-label {
+    color: var(--primary-color);
+}
+
+/* Wizard Form Steps container */
+.form-step {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.form-step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-title {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(13, 35, 58, 0.08);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.step-title span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+/* Custom Selector Cards */
+.selector-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.selector-card {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.selector-card:hover {
+    border-color: var(--primary-color);
+}
+
+.selector-card input[type="radio"], .selector-card input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+}
+
+.selector-card.selected {
+    border-color: var(--primary-color);
+    background-color: rgba(13, 35, 58, 0.02);
+}
+
+.selector-card-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.selector-card-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+}
+
+.selector-card-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Guarantor Card list */
+.guarantor-box {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: #f8fafc;
+    position: relative;
+}
+
+.guarantor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.guarantor-num {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.remove-guarantor {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* File Upload Styles */
+.file-upload-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.file-upload-box {
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    text-align: center;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+.file-upload-box:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(13, 35, 58, 0.01);
+}
+
+.file-upload-box input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-upload-icon {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.file-upload-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.file-upload-text strong {
+    color: var(--primary-color);
+}
+
+.file-preview {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--success-color);
+    font-weight: 500;
+    display: none;
+}
+
+/* Signature Pad Styling */
+.signature-container {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    width: 100%;
+    max-width: 450px;
+}
+
+.signature-pad-wrapper {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background-color: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.signature-pad-wrapper canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+.signature-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.btn-sig-clear {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    background-color: #e2e8f0;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+}
+
+/* Navigation Actions inside Wizard */
+.wizard-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Preview / Summary Page in Form */
+.summary-section {
+    background-color: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.summary-section h4 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 0.25rem;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0.5rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.summary-label {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.summary-value {
+    color: var(--text-primary);
+}
+
+/* Legal text scroll box */
+.legal-scroll {
+    height: 150px;
+    overflow-y: scroll;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    background-color: #f8fafc;
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive Form fields */
+@media (max-width: 768px) {
+    .stepper {
+        overflow-x: auto;
+        justify-content: flex-start;
+        gap: 1.5rem;
+        padding-bottom: 1rem;
+    }
+    
+    .stepper::before, .stepper-progress {
+        display: none;
+    }
+    
+    .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
